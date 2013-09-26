@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="ui-mobile-rendering" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <!-- The Scripts. All the js files and css stylesheets we are going to need -->
+
+        <link type="text/css" rel="stylesheet" href="css/pageslider.css">
+        <link type="text/css" rel="stylesheet" href="css/styles.css">
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+
+        <!-- Keep in mind that the order of the scripts and stylesheets matters -->
+
+        <script type="text/javascript" charset="utf-8" src="lib/pageslider.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/fastclick.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/handlebars.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/underscore-min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/jquery.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/speechRec.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/jquery.json-2.3.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="lib/backbone.js"></script>
+
+
+
+        <!-- Platform -->
+        <script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="../config.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="js/language/en/language_en.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/models.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/helperView.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/view.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+
+        <!-- The Templates. These hold the html structure of the application -->
+        <!-- Re-usable ok overlay for the application -->
+        <script type="text/template" id="errorOverlay">
+            <div class="dialogWrapper">
+                <div class="dialogWrapperInner">
+                    <div class="dialogView">
+                        <div class="dialogViewInner">
+                            <h5><%= title %></h5>
+                            <p><%= title %></p>
+                            <ul class="actions">
+                                <% _.each(actions, function(action, label) { %>
+                                <li><div class="pageLink feedbackbutton" id="<%= label %>" data-link="<%= label %>">
+                                    <%= label %>
+                                </div><!--<button id="<%= label %>"><%= label %></button>--></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <!-- HOME VIEW -->
+        <script type="text/x-handlebars-template" id="firstpage">
+            <div>
+                <div class="header">
+                    <h1>{{header}}</h1>
+                </div>
+            <div class="scroller">
+                <div data-link="secondpage" class="feedbackbutton pageLink">{{{speech}}}</div>
+                <div data-link="thirdpage" class="feedbackbutton pageLink">{{{buttons}}}</div>
+                </div>
+            </div>
+        </script>
+
+        <!-- secondpage VIEW -->
+        <script type="text/x-handlebars-template" id="secondpage">
+            <div>
+                <div class="header">
+                    <div data-link="firstpage" class="feedbackbuttonsmall pageLink">{{{back}}}</div>
+                    <h1>{{{header}}}</h1>
+                </div>
+                <div class="scroller">
+                    <div data-link="talk" class="feedbackbutton pageLink">{{{talk}}}</div>
+                    <p>{{{textbox}}}</p>
+                    <textarea></textarea>
+                </div>
+            </div>
+        </script>
+
+        <!-- thirdpage VIEW -->
+        <script type="text/x-handlebars-template" id="thirdpage">
+            <div>
+                <div class="header">
+                    <div data-link="firstpage" class="feedbackbuttonsmall pageLink">{{{back}}}</div>
+                    <h1 class="headertext">{{{header}}}</h1>
+                </div>
+                <div class="controlsWrapper">
+                    <div class="commandWrapper">
+                        <div class="takeofflandWrapper">
+                            <div class="feedbackbuttonsmall" id="takeoff">Take off</div>
+                            <div class="feedbackbuttonsmall" id="land">Land</div>
+                            <div class="feedbackbuttonsmall" id="stop">Panic!!</div>
+                        </div>
+                        <div class="updownWrapper">
+                            <div class="feedbackbuttonsmall" id="up">Up</div>
+                            <div class="feedbackbuttonsmall" id="down">Down</div>
+                        </div>
+                        <div class="rotateWrapper">
+                            <div class="feedbackbuttonsmall" id="couterclockwise">Couter Clockwise</div>
+                            <div class="feedbackbuttonsmall" id="clocwise">Clockwise</div>
+                        </div>
+                        <div class="moveWrapper">
+                            <div class="feedbackbuttonsmall" id="forward">	&uarr;</div>
+                            <div>
+                                <div class="feedbackbuttonsmall" id="left"> &larr;</div>
+                                <div class="feedbackbuttonsmall" id="right"> &rarr;</div>
+                            </div>
+                            <div class="feedbackbuttonsmall" id="back">	&darr;</div>
+                        </div>
+                        <div class="speedInputWrapper">
+                            <p>Type in the speed of movement:</p>
+                            <input type="number" name="value" id="value">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </script>
+
+   </head>
+
+    <body>
+
+        <div id="container"></div>
+    </body>
+
+</html>

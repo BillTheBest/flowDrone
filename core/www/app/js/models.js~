@@ -1,0 +1,55 @@
+// Namespace
+basilicom.model = {};
+
+basilicom.model.form= {
+    "fields":[{
+        "name":"Name",
+        "value":"",
+        "schema":{
+            "type":"Text",
+            "title":"name",
+            "dataType":"text",
+            "validators":["required"],
+            "options":[""]
+        }
+    },{
+        "name":"email",
+        "value":"",
+        "schema":{
+            "type":"Text",
+            "title":"e-mail",
+            "dataType":null,
+            "validators":["required", 'email'],
+            "options":[""]
+        }
+    },
+        {
+        "name":"tos",
+        "value":null,
+        "schema":{
+            "type":"Checkbox",
+            "title":"I accept Terms of Service",
+            "dataType":null,
+            "validators":["required"],
+            "options":[{val: 1,label:"I accept the Terms of Service"}]
+        }
+    }]
+};
+
+
+/**
+ *
+ * @type Backbone.Model for the Participant. In this model
+ * we save the data from the user
+ */
+basilicom.model.Participant = Backbone.Model.extend();
+
+/**
+ *
+ * @type Backbone.Collection for the Participants. In this collection
+ * we save all the different participants.
+ */
+basilicom.model.ParticipantCollection = Backbone.Collection.extend({
+    model: basilicom.model.Participant,
+    localStorage: new Backbone.LocalStorage("Participants")
+});

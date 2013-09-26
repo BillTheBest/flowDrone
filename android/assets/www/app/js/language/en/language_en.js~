@@ -1,0 +1,8 @@
+// Namespace
+basilicom.language = {};
+
+
+basilicom.language.firstpage = {
+	firstpagetext: "Hello World"
+
+}

@@ -1,0 +1,19 @@
+# Start by connecting to drone. We could provide IP here
+'' -> IP Connect(ardrone/Connect)
+# Tell drone to take off
+Connect() CLIENT -> CLIENT Takeoff(ardrone/Takeoff)
+# Start turning
+'0.5' -> SPEED Turn(ardrone/TurnClockwise)
+Takeoff() CLIENT -> CLIENT Turn()
+# Wait a bit for it to turn
+'2000' -> DELAY WaitTurn(ardrone/Wait)
+Turn() CLIENT -> CLIENT WaitTurn()
+# Then stop
+WaitTurn() CLIENT -> CLIENT Stop(ardrone/Stop)
+# Hover a bit
+'5000' -> DELAY Hover(ardrone/Wait)
+Stop() CLIENT -> CLIENT Hover()
+# Tell drone to land
+Hover() CLIENT -> CLIENT Land(ardrone/Land)
+# And that is all, folks!
+Land() CLIENT -> IN End(core/Drop)

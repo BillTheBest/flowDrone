@@ -1,0 +1,409 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, a,  blockquote, pre, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    font-family:Arial;
+}
+
+/*We need this styling for the older androids not to have a highlight colour when clicking
+*Without this there is randomly coloured and shaped click highlight
+*/
+button, li , a, *:hover
+{
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+}
+html,body {
+    line-height:1;
+    height:100%;
+    width:100%;
+    min-width:100%;
+    min-height:100%;
+}
+
+@media screen and (max-device-width : 319px){
+    html,body {
+        font-size:40%;
+    }
+}
+@media screen and (min-device-width : 320px) and (max-device-width : 479px){
+    html,body {
+        font-size:50%;
+    }
+}
+@media screen and (min-device-width : 480px) and (max-device-width : 639px){
+    html,body {
+        font-size:60%;
+    }
+}
+@media screen and (min-device-width : 640px) and (max-device-width : 767px){
+    html,body {
+        font-size:70%;
+    }
+}
+@media screen and (min-device-width : 768px) and (max-device-width : 959px){
+    html,body {
+        font-size:70%;
+    }
+}
+@media screen and (min-device-width : 960px){
+    html,body {
+        font-size:90%;
+    }
+}
+
+h1, h2{
+    text-shadow:0 1px 0 #fff;
+    color:#444;
+    font-size:2em;
+    line-height:1.2;
+    display:block;
+    width:100%;
+    text-transform: uppercase;
+}
+p{
+    font-size:1.5em;
+    line-height:1.5;
+    margin-bottom:1.5em;
+}
+#viewport,div[data-role=page]{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.contentDiv{
+    width:100%;
+    height:auto;
+    position:relative;
+}
+
+
+
+/*
+*OK Overlay styles
+*/
+.dialogWrapper{
+    position: fixed;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    z-index: 99999;
+    overflow: hidden;
+
+}
+
+.dialogWrapperInner{
+    position: relative;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    overflow: hidden;
+}
+.dialogView{
+    width: 70%;
+    border-radius: 8px;
+    background:url(../asset/img/overlay-black.png);
+    color: #fff;
+    margin:0 auto;
+    top:25%;
+    position: relative;
+}
+
+.dialogViewInner{
+    padding: 20px;
+    text-align: center;
+}
+
+.btn-close{
+    position: absolute;
+    right: 1.6%;
+    width: 6%;
+    top: 4.5%;
+    z-index:999999;
+}
+.btn-close img{
+    width: 100%;
+    max-width:58px;
+}
+.dialogViewInner img.ext{
+    width:35%;
+    margin:0 auto;
+    max-width:89px;
+}
+.dialogViewInner img.int{
+    width:70%;
+    margin:0 auto;
+    max-width:264px;
+}
+.dialogViewInner .actions li{
+    list-style: none;
+    display: inline;
+}
+.dialogViewInner button{
+    background-color: #28b4ed;
+    border-radius: 5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    border: none;
+    padding: 10px 12px;
+}
+
+.topNavPlaceholder{
+    height:10%;
+    width:100%;
+
+}
+
+* {
+    -webkit-user-select: none;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font: 14px sans-serif;
+    background-color: #EAEAEA;
+}
+
+
+.header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 10%;
+    background: #109adc;
+    color: #FFFFFF;
+    border-bottom: 1px solid #0E5895;;
+}
+.headertext{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.header h1 {
+    font-size: 20px;
+    line-height: 44px;
+    text-align: center;
+    margin: 0px;
+}
+
+.header .btn {
+    padding: 0px 12px 0px 12px;
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    line-height: 32px;
+    background-color: #0984c6;
+    border: 1px solid #0e5895;
+    border-radius: 2px;
+}
+
+
+
+.page .scroller {
+    position: absolute;
+    overflow: auto;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90%;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+/*Controllinbuttons*/
+
+
+.controlsWrapper{
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90%;
+
+}
+.commandWrapper{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    padding: 1%;
+
+}
+.takeofflandWrapper{
+    display: table;
+    table-layout: fixed;
+    width:100%;
+    height:15%;
+    padding: 5%;
+    box-sizing: border-box;
+
+}
+.takeofflandWrapper div{
+    display: table-cell;
+    padding: 5%;
+}
+
+.updownWrapper{
+    display: table;
+    table-layout: fixed;
+    width:100%;
+    height:15%;
+    padding: 5%;
+    box-sizing: border-box;
+
+}
+.updownWrapper div{
+    display: table-cell;
+    padding: 5%;
+}
+.rotateWrapper{
+    display: table;
+    table-layout: fixed;
+    width:100%;
+    height:15%;
+    padding: 5%;
+    box-sizing: border-box;
+
+}
+.rotateWrapper div{
+    display: table-cell;
+    padding: 5%;
+}
+.moveWrapper{
+    position: absolute;
+    top: 50%;
+    width:100%;
+    height:25%;
+    padding: 5%;
+    box-sizing: border-box;
+
+}
+
+#forward{
+    position: absolute;
+    display: block;
+    top: 0%;
+    left: 40%;
+}
+#left{
+    position: absolute;
+    top: 30%;
+    left: 0;
+}
+#right{
+    position: absolute;
+    top: 30%;
+    right: 0;
+
+}
+#back{
+    position: absolute;
+    display: block;
+    left: 40%;
+    bottom: 0;
+}
+
+.speedInputWrapper{
+    position: absolute;
+    top: 75%;
+    height: 15%;
+    box-sizing: border-box;
+}
+
+
+/**
+*Just add -webkit-tap-highlight-color: rgba(black, 0); to your button styles
+*together with the global        document.addEventListener("touchstart", function(){}, true);
+*to have responsive feel for all your buttons
+*/
+
+.feedbackbutton {
+    position: relative;
+    display: block;
+    width: 75%;
+    margin: 50px auto;
+    padding: 20px 20px;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 5px 0 0 #e9edee, 0 5px 0 2px #ccd2d2, 0 12px 20px 6px #d5dbdb;
+    text-align: center;
+    color: dimgrey;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    -webkit-tap-highlight-color: rgba(black, 0);
+    }
+.feedbackbutton:active {top: 5px;
+    -webkit-box-shadow: 0 1px 0 2px #ccd2d2, 0 7px 20px 6px #d5dbdb;
+}
+
+.feedbackbuttonsmall {
+    width: 10%;
+    margin: 2%;
+    padding: 5%;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 2px 0 0 #5f6ca0, 0 2px 0 1px #23294b, 0 6px 10px 3px #23294b;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(black, 0);
+}
+.feedbackbuttonsmall:active {top: 5px;
+    -webkit-box-shadow: 0 1px 0 1px #23294b, 0 4px 10px 3px #5f6ca0;
+}
+#firstpage{
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+#nextPage{
+    position: absolute;
+    top:0px;
+    right:0px;
+}
+
+.feedbackbuttonnohighlight{
+    position: relative;
+    display: block;
+    width: 75%;
+    margin: 50px auto;
+    padding: 20px 20px;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 5px 0 0 #e9edee, 0 5px 0 2px #ccd2d2, 0 12px 20px 6px #d5dbdb;
+    text-align: center;
+    color: dimgrey;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+.takingCommands {top: 5px;
+    background-color: red;
+    -webkit-box-shadow: 0 1px 0 2px #ccd2d2, 0 7px 20px 6px #d5dbdb;
+}

@@ -1,0 +1,56 @@
+// Namespace
+basilicom.views = {};
+
+/**
+ *
+ * @type Backbone View
+ *///TODO:Wrap up as a component!!
+
+basilicom.views.DialogOverlay = Backbone.View.extend({
+    attrs: {},
+    events: {
+        'click .actions button': 'clickAction'
+    },
+    initialize: function (options) {
+        this.attrs.title = options.title;
+        this.attrs.actions = options.actions;
+    },
+    clickAction: function (event) {
+        var action = event.target.id;
+        this.attrs.actions[action]();
+    },
+    render: function () {
+        this.$el.html(_.template($('#dialogOverlay').html(), this.attrs));
+        return this;
+    }
+});
+
+/**
+ *
+ * @type Backbone View
+ */
+
+basilicom.views.FirstPageView = Backbone.View.extend({
+    localizations: basilicom.language.firstpage,
+    events: {
+    },
+    initialize: function (options) {
+        // Ensure our methods keep the `this`
+        // reference to the view itself
+        _.bindAll(this, 'render');
+
+    },
+    template: function (viewData) {
+        var data = _.isObject(viewData) ? viewData : {};
+        var tpl = Handlebars.compile($('#firstpage').html());
+        return tpl(data);
+    },
+
+    render: function (eventName) {
+        var self = this;
+        $(this.el).html(this.template(this.localizations));
+        return this;
+    }
+});
+
+

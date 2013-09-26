@@ -1,0 +1,83 @@
+// Namespace
+basilicom.application = {};
+
+var participantCollection;
+/*
+* The router. In here we will handle the page navigation
+* */
+basilicom.application.AppRouter = Backbone.Router.extend({
+
+    routes: {
+        "": "firstpage",
+        "firstpage": "firstpage",
+        "afterActionBit/:id": "afterActionBit",
+        "gallery/:page": "gallery"
+    },
+
+    /**
+     *  different pages called with using the same change page function
+     *this way we don't need to tell every page how it should load.
+     */
+
+    firstpage: function () {
+        var view = new basilicom.views.FirstPageView({
+            model:new basilicom.model.Participant
+        });
+        this.changePage(view);
+    },
+
+    afterActionBit: function (id) {
+        console.log(id);
+        if (!participantCollection.get(id)) {
+            console.log("We have no model, go back to first page");
+            applicationRoute.navigate("#firstpage", true);
+        }
+        var model = participantCollection.get(id)
+        console.log(model.attributes.userdetails);
+        this.changePage(new basilicom.views.afterActionBitView({
+            model: model
+        }));
+    },
+    gallery: function (page) {
+        console.log(page);
+        var newPage = page;
+        if (!page) {
+            newPage = 1;
+        }
+        console.log(newPage);
+        var view = new basilicom.views.galleryView({
+                page: parseInt(newPage)
+            }
+        );
+        this.changePage(view);
+    },
+
+
+    /* changePage: function helps us to load every page with the same style and way.*/
+    changePage: function (page) {
+        // Page load
+
+        $(page.el).attr('data-role', 'page');
+        page.render();
+        $('#viewport').html(page.el);
+
+    }
+});
+
+if (basilicom.config.isBrowserLocalMode) {
+    $(document).ready(function () {
+        console.log("Document Ready");
+        participantCollection = new basilicom.model.ParticipantCollection([]);
+        participantCollection.fetch();
+        applicationRoute = new basilicom.application.AppRouter();
+        Backbone.history.start();
+    });
+} else {
+    document.addEventListener('deviceready', function () {
+        console.log("Device Ready");
+        participantCollection = new basilicom.model.ParticipantCollection([]);
+        participantCollection.fetch();
+        applicationRoute = new basilicom.application.AppRouter();
+        Backbone.history.start();
+    }, false);
+}

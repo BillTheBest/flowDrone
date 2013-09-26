@@ -1,0 +1,12 @@
+// Namespace
+var basilicom = {};
+
+
+// App Configuration Values
+
+basilicom.configall = {
+    server : "http://yp.durex.com/rpc",
+    isBrowserLocalMode: false,
+    ios: false
+
+};
