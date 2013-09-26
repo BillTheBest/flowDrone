@@ -76,14 +76,14 @@ basilicom.views.SecondPageView = Backbone.View.extend({
                 var textArea = $('.speechtext');
                 var textAreaID = 'speechtext';
 
-                    
-                startRecognition();
-        
-
                 var startRecognition = function() {
                     textArea.focus();
                     recognition.start();
                };
+
+
+                startRecognition();
+        
 
                 recognition.onresult = function (event) {
                   console.log(event.result)
