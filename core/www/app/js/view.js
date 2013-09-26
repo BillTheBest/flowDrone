@@ -46,56 +46,60 @@ basilicom.views.FirstPageView = Backbone.View.extend({
 
 basilicom.views.SecondPageView = Backbone.View.extend({
     localizations: basilicom.language.secondpage,
+    recognition: null,
     events: {
         "click .pageLink": "nextPage"
     },
     nextPage: function(event){
         event.preventDefault();
         var thisPage = $(event.currentTarget).attr("data-link");
-        console.log(thisPage);
         if(thisPage === "talk"){
-
-            if($(event.currentTarget).hasClass("takingCommands")){
+            if ($(event.currentTarget).hasClass("takingCommands")){
                 $(event.currentTarget).removeClass("takingCommands").addClass("noCommands");
+                if (this.recognition) {
+                    this.recognition.stop();
+                }
                 console.log("We are not taking commands anymore, the copter should land automatically");
-            }
-            else{
+            } else {
+                try {
+                    this.recognition = new webkitSpeechRecognition();
+                } catch(e) {
+                    console.log('No speech recognition available');
+                    return;
+                }
                 $(event.currentTarget).removeClass("noCommands").addClass("takingCommands");
                 console.log("We are taking commands!");
-                
-                                
-                try {
-                    var recognition = new webkitSpeechRecognition();
-                } catch(e) {
-                  var recognition = Object;
-                }
-                recognition.continuous = true;
-                recognition.interimResults = true;
+                this.recognition.continuous = true;
 
                 var interimResult = '';
-                var textArea = $('.speechtext');
-                var textAreaID = 'speechtext';
+                var list = $('.speechtext');
 
-                var startRecognition = function() {
-                    textArea.focus();
-                    recognition.start();
-               };
+                this.recognition.start();
 
-
-                startRecognition();
-        
-
-                recognition.onresult = function (event) {
-                  console.log(event.results)
-                };
-
-                recognition.onend = function() {
-                    $('.takingCommands').removeClass('takingCommands').addClass('noCommands');
-                };
-    
-                
+                this.recognition.onspeechstart = function (event) {
+                  console.log('Look who is talking!');
                 }
-        }else{
+
+                var handled = [];
+                this.recognition.onresult = function (event) {
+                  _.each(event.results, function (result, idx) {
+                    if (!result.isFinal) {
+                      return;
+                    }
+                    if (handled.indexOf(idx) !== -1) {
+                      return;
+                    }
+                    list.append($('<li>' + result[0].transcript + '</li>'));
+                    handled.push(idx);
+                  });
+                }.bind(this);
+
+                this.recognition.onend = function() {
+                    $('.takingCommands').removeClass('takingCommands').addClass('noCommands');
+                    this.recognition = null;
+                }.bind(this);
+            }
+        } else {
             applicationRoute.navigate("#" + thisPage, true);
         }
 
