@@ -86,7 +86,7 @@ basilicom.views.SecondPageView = Backbone.View.extend({
         
 
                 recognition.onresult = function (event) {
-                  console.log(event.result)
+                  console.log(event.results)
                 };
 
                 recognition.onend = function() {
