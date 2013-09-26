@@ -22,3 +22,6 @@ local.properties
 # node modules
 
 node_modules/
+
+
+*~

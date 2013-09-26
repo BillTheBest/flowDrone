@@ -86,19 +86,7 @@ basilicom.views.SecondPageView = Backbone.View.extend({
                };
 
                 recognition.onresult = function (event) {
-                    var pos = textArea.getCursorPosition() - interimResult.length;
-                    textArea.val(textArea.val().replace(interimResult, ''));
-                    interimResult = '';
-                    textArea.setCursorPosition(pos);
-                    for (var i = event.resultIndex; i < event.results.length; ++i) {
-                        if (event.results[i].isFinal) {
-                            insertAtCaret(textAreaID, event.results[i][0].transcript);
-                        } else {
-                            isFinished = false;
-                            insertAtCaret(textAreaID, event.results[i][0].transcript + '\u200B');
-                            interimResult += event.results[i][0].transcript + '\u200B';
-                        }
-                    }
+                  console.log(event.result)
                 };
 
                 recognition.onend = function() {
