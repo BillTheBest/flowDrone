@@ -5,13 +5,6 @@ body{
 
 }
 
-.stop{
-    position: absolute;
-    bottom: 0;
-    margin: 10%;
-}
-
-/*compass*/
 .gaugeframebg, .compassWrapper, .compassrotator, .compasscenter, .centerstatic, .attitudeWrapper, .attitudemoving,
 .attitudestaticouter, .attitudestatic, .speedometerWrapper, .speedometerstaticbg, .speedometerpointer,
 .altitudeWrapper,.altitudedisk, .altitudetaticbg, .altitudepointershort, .altitudepointerlong,
