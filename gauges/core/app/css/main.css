@@ -1,15 +1,28 @@
 body{
     width: 100%;
-}
-.compassWrapper{
+    background-image:url(../asset/img/bg.jpg);
 
 }
-.gaugebg{
+.gaugeframebg{
     position: absolute;
     top:0;
     left:0;
     width: 100%;
 }
+.stop{
+    position: absolute;
+    bottom: 0;
+    margin: 10%;
+}
+
+/*compass*/
+.compassWrapper{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%
+}
+
 .compassrotator{
     position: absolute;
     top:0;
@@ -29,8 +42,57 @@ body{
     width: 100%;
 }
 
-.stop{
+
+
+
+/*altitudemeter*/
+.altitudeWrapper{
     position: absolute;
-    bottom: 0;
-    margin: 10%;
+    top:30%;
+    left:0;
+    width: 100%
+}
+
+
+.altitudemoving{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+.altitudestaticouter{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+.altitudestatic{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+
+
+
+/*speedometerWrapper*/
+.speedometerWrapper{
+    position: absolute;
+    top:60%;
+    left:0;
+    width: 100%
+}
+
+
+.speedometerstaticbg{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+.speedometerpointer{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
 }

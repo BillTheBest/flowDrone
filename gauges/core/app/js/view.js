@@ -8,11 +8,11 @@ cannonerd.views = {};
 
 cannonerd.views.FirstPageView = Backbone.View.extend({
     localizations: cannonerd.language.firstpage,
-    timeoutclearer: null,
+    mockcompassclearer: null,
+    mockspeedclearer: null,
     watchID: null,
     events: {
-        "click .pageLink": "nextPage",
-        "click .stop": "stop"
+        "click .pageLink": "nextPage"
     },
     nextPage: function(event){
         event.preventDefault();
@@ -20,12 +20,7 @@ cannonerd.views.FirstPageView = Backbone.View.extend({
         console.log(thisPage);
         applicationRoute.navigate("#" + thisPage, true);
     },
-    stop: function(event){
-        event.preventDefault();
-        window.clearInterval(this.timeoutclearer);
 
-
-    },
     initialize: function (options) {
         // Ensure our methods keep the `this`
         // reference to the view itself
@@ -43,14 +38,36 @@ cannonerd.views.FirstPageView = Backbone.View.extend({
         //The global touchstart listener is to enable the usage of -webkit-tap-highlight-color: rgba(black, 0);
         //to get instant feedback on button pushes. For the user it FEELS faster
         document.addEventListener("touchstart", function(){}, true);
-        var compassread = 0;
-            this.timeoutclearer= window.setInterval(function(){
-                compassread = Math.random() * 360;
-                console.log(compassread);
-                $(".compassrotator", this.el).css({
-                    "-webkit-transform": "rotate("+compassread+"deg)"
-                });
-            }, 1000);
+
+        /*Compass functionalities testing for 5 seconds*/
+        var mockcompass = 0;
+        this.mockcompassclearer= window.setInterval(function(){
+            mockcompass = Math.random() * 360;
+            $(".compassrotator", this.el).css({
+                "-webkit-transform": "rotate("+mockcompass+"deg)"
+            });
+        }, 1000);
+        var self= this;
+        var timeout= setTimeout(function(){
+            window.clearInterval(self.mockcompassclearer);
+        }, 5000);
+
+        var mocckaltitudedata = 0;
+        $(".altitudemoving", this.el).css({
+            "left": mocckaltitudedata+"%",
+            "top": mocckaltitudedata+"%"
+        });
+
+        var mockspeed= 87;
+        this.mockspeedclearer= window.setInterval(function(){
+            mockspeed = Math.random() * 360;
+            $(".speedometerpointer", this.el).css({
+                "-webkit-transform": "rotate("+mockspeed+"deg)"
+            });
+        }, 1000);
+        var timeout= setTimeout(function(){
+            window.clearInterval(self.mockspeedclearer);
+        }, 5000);
 
         return this;
     }
