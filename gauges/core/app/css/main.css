@@ -1,0 +1,36 @@
+body{
+    width: 100%;
+}
+.compassWrapper{
+
+}
+.gaugebg{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+.compassrotator{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+.compasscenter{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+.centerstatic{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+
+.stop{
+    position: absolute;
+    bottom: 0;
+    margin: 10%;
+}

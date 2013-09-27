@@ -31,4 +31,7 @@
     <feature name="SpeechSynthesis">
         <param name="android-package" value="org.apache.cordova.speech.SpeechSynthesis" />
     </feature>
+		<feature name="Compass">
+				<param name="android-package" value="org.apache.cordova.CompassListener" />
+		</feature>
 </widget>
