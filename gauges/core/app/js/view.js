@@ -11,7 +11,7 @@ cannonerd.views.FirstPageView = Backbone.View.extend({
     mockcompassclearer: null,
     mockspeedclearer: null,
     mockaltitudeclearer: null,
-    mockvarioclearer: null,
+    mockbatteryclearer: null,
     watchID: null,
     events: {
         "click .pageLink": "nextPage"
@@ -90,15 +90,15 @@ cannonerd.views.FirstPageView = Backbone.View.extend({
         }, 5000);
 
 
-        var mockvario= 37;
-        this.mockvarioclearer= window.setInterval(function(){
-            mockvario = Math.random() * 360;
-            $(".variopointer", this.el).css({
-                "-webkit-transform": "rotate("+mockvario+"deg)"
+        var mockbattery= 37;
+        this.mockbatteryclearer= window.setInterval(function(){
+            mockbattery = Math.random() * 360;
+            $(".batterypointer", this.el).css({
+                "-webkit-transform": "rotate("+mockbattery+"deg)"
             });
         }, 1000);
         var timeout4= setTimeout(function(){
-            window.clearInterval(self.mockvarioclearer);
+            window.clearInterval(self.mockbatteryclearer);
         }, 5000);
         return this;
     }

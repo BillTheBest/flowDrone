@@ -8,7 +8,7 @@ body{
 .gaugeframebg, .compassWrapper, .compassrotator, .compasscenter, .centerstatic, .attitudeWrapper, .attitudemoving,
 .attitudestaticouter, .attitudestatic, .speedometerWrapper, .speedometerstaticbg, .speedometerpointer,
 .altitudeWrapper,.altitudedisk, .altitudetaticbg, .altitudepointershort, .altitudepointerlong,
-.varioWrapper, .variostaticbg, .variopointer
+.batteryWrapper, .batterystaticbg, .batterypointer
 {
     position: absolute;
     top:0;
@@ -29,7 +29,7 @@ body{
 
     left:50%;
 }
-.varioWrapper{
+.batteryWrapper{
     top:30%;
     left:50%;
  }
