@@ -10,6 +10,8 @@ cannonerd.views.FirstPageView = Backbone.View.extend({
     localizations: cannonerd.language.firstpage,
     mockcompassclearer: null,
     mockspeedclearer: null,
+    mockaltitudeclearer: null,
+    mockvarioclearer: null,
     watchID: null,
     events: {
         "click .pageLink": "nextPage"
@@ -65,10 +67,39 @@ cannonerd.views.FirstPageView = Backbone.View.extend({
                 "-webkit-transform": "rotate("+mockspeed+"deg)"
             });
         }, 1000);
-        var timeout= setTimeout(function(){
+        var timeout2= setTimeout(function(){
             window.clearInterval(self.mockspeedclearer);
         }, 5000);
 
+
+        var mockaltitudepointershort= 0;
+        var mockaltitudepointerlong= 56;
+        this.mockaltitudeclearer= window.setInterval(function(){
+            mockaltitudepointershort = Math.random() * 360;
+            $(".altitudepointershort", this.el).css({
+                "-webkit-transform": "rotate("+mockaltitudepointershort+"deg)"
+            });
+
+            mockaltitudepointerlong = Math.random() * 360;
+            $(".altitudepointerlong", this.el).css({
+                "-webkit-transform": "rotate("+mockaltitudepointerlong+"deg)"
+            });
+        }, 1000);
+        var timeout3= setTimeout(function(){
+            window.clearInterval(self.mockaltitudeclearer);
+        }, 5000);
+
+
+        var mockvario= 37;
+        this.mockvarioclearer= window.setInterval(function(){
+            mockvario = Math.random() * 360;
+            $(".variopointer", this.el).css({
+                "-webkit-transform": "rotate("+mockvario+"deg)"
+            });
+        }, 1000);
+        var timeout4= setTimeout(function(){
+            window.clearInterval(self.mockvarioclearer);
+        }, 5000);
         return this;
     }
 });

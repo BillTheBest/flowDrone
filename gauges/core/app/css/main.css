@@ -1,14 +1,10 @@
 body{
     width: 100%;
     background-image:url(../asset/img/bg.jpg);
+    overflow: hidden;
 
 }
-.gaugeframebg{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
+
 .stop{
     position: absolute;
     bottom: 0;
@@ -16,83 +12,31 @@ body{
 }
 
 /*compass*/
+.gaugeframebg, .compassWrapper, .compassrotator, .compasscenter, .centerstatic, .attitudeWrapper, .attitudemoving,
+.attitudestaticouter, .attitudestatic, .speedometerWrapper, .speedometerstaticbg, .speedometerpointer,
+.altitudeWrapper,.altitudedisk, .altitudetaticbg, .altitudepointershort, .altitudepointerlong,
+.varioWrapper, .variostaticbg, .variopointer
+{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 66%;
+}
+
 .compassWrapper{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%
+
 }
-
-.compassrotator{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
-.compasscenter{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
-.centerstatic{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
-
-
-
-
-/*altitudemeter*/
-.altitudeWrapper{
-    position: absolute;
+.attitudeWrapper{
     top:30%;
-    left:0;
-    width: 100%
 }
-
-
-.altitudemoving{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
-.altitudestaticouter{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
-.altitudestatic{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
-
-
-
-/*speedometerWrapper*/
 .speedometerWrapper{
-    position: absolute;
     top:60%;
-    left:0;
-    width: 100%
 }
+.altitudeWrapper{
 
-
-.speedometerstaticbg{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
+    left:50%;
 }
-.speedometerpointer{
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-}
+.varioWrapper{
+    top:30%;
+    left:50%;
+ }
