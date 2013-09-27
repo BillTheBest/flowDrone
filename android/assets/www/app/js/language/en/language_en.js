@@ -1,22 +1,24 @@
 // Namespace
-basilicom.language = {};
+cannonerd.language = {};
 
 
-basilicom.language.firstpage = {
+cannonerd.language.firstpage = {
     header: "Command The Drone",
     back: "back",
     speech: "By Speech",
     buttons: "By Buttons"
 },
 
-basilicom.language.secondpage = {
+cannonerd.language.secondpage = {
     header: "Speach Command Center",
     back: "back",
     talk: "Talk",
-    textbox: "Here you see the commands you have given in written form"
+    textbox: "Here you see the commands you have given in written form",
+    errortitle: "Error",
+    errordescription: "The Speech recognition is regrettably unavailable on this device"
 },
 
-basilicom.language.thirdpage = {
+cannonerd.language.thirdpage = {
     header: "Speach Command Center",
     back: "back",
     talk: "Talk",

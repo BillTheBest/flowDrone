@@ -1,3 +1,3 @@
 // Namespace
-basilicom.model = {};
+cannonerd.model = {};
 

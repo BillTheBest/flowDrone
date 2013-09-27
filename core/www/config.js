@@ -1,11 +1,10 @@
 // Namespace
-var basilicom = {};
+var cannonerd = {};
 
-
+console.log("foo");
 // App Configuration Values
-
-basilicom.config = {
-    browserInLocalMode: true,
+cannonerd.config = {
+    inLocalMode: true,
     ios: false
 
 };

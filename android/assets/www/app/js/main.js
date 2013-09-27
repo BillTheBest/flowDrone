@@ -1,11 +1,10 @@
 // Namespace
-basilicom.application = {};
+cannonerd.application = {};
 var slider;
-var oldpage;
 /*
 * The router. In here we will handle the page navigation
 * */
-basilicom.application.AppRouter = Backbone.Router.extend({
+cannonerd.application.AppRouter = Backbone.Router.extend({
 
     routes: {
         "": "firstpage",
@@ -20,28 +19,28 @@ basilicom.application.AppRouter = Backbone.Router.extend({
      */
 
     firstpage: function () {
-        var view = new basilicom.views.FirstPageView();
+        var view = new cannonerd.views.FirstPageView();
         view.render();
         slider.slidePage($(view.el));
 
     },
 
     secondpage: function () {
-        var view = new basilicom.views.SecondPageView();
+        var view = new cannonerd.views.SecondPageView();
         view.render();
         //this is our new Change page. It supports transitions between pages
         slider.slidePage($(view.el));
     },
 
     thirdpage: function () {
-    var view = new basilicom.views.ThirdPageView();
+    var view = new cannonerd.views.ThirdPageView();
     view.render();
     //this is our new Change page. It supports transitions between pages
     slider.slidePage($(view.el));
 },
 
     fourthpage: function () {
-        var view = new basilicom.views.FourthPageView();
+        var view = new cannonerd.views.FourthPageView();
         view.render();
         //this is our new Change page. It supports transitions between pages
         slider.slidePage($(view.el));
@@ -78,10 +77,10 @@ function preloader()
         imageObj.src=images[i];
     }
 
-    applicationRoute = new basilicom.application.AppRouter();
+    applicationRoute = new cannonerd.application.AppRouter();
     Backbone.history.start();
 }
-    if (basilicom.config.browserInLocalMode) {
+    if (cannonerd.config.inLocalMode) {
     $(document).ready(function () {
         console.log("Document Ready");
         window.addEventListener('load', function() {

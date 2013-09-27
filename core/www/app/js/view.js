@@ -1,13 +1,13 @@
 // Namespace
-basilicom.views = {};
+cannonerd.views = {};
 
 /**
  *
  * @type Backbone View
  */
 
-basilicom.views.FirstPageView = Backbone.View.extend({
-    localizations: basilicom.language.firstpage,
+cannonerd.views.FirstPageView = Backbone.View.extend({
+    localizations: cannonerd.language.firstpage,
     events: {
         "click .pageLink": "nextPage"
     },
@@ -44,8 +44,8 @@ basilicom.views.FirstPageView = Backbone.View.extend({
  */
 
 
-basilicom.views.SecondPageView = Backbone.View.extend({
-    localizations: basilicom.language.secondpage,
+cannonerd.views.SecondPageView = Backbone.View.extend({
+    localizations: cannonerd.language.secondpage,
     recognition: null,
     events: {
         "click .pageLink": "nextPage"
@@ -62,42 +62,82 @@ basilicom.views.SecondPageView = Backbone.View.extend({
                 console.log("We are not taking commands anymore, the copter should land automatically");
             } else {
                 try {
-                    this.recognition = new webkitSpeechRecognition();
+                    if(cannonerd.config.inLocalMode){
+                        this.recognition = new webkitSpeechRecognition();
+                    }else{
+                        console.log("phonegap");
+                        //the phonegap implementation lives here
+                        this.recognition = new SpeechSynthesis();
+                    }
                 } catch(e) {
                     console.log('No speech recognition available');
+                    /* Dialog overlay for handling errors and confirmations*/
+                    var errorOverlay = new cannonerd.helperviews.errorOverlay({
+                        title: this.localizations.errortitle,
+                        description: this.localizations.errordescription,
+                        actions: {'OK': function () {
+                            jQuery(".dialogWrapper").remove();
+                        }
+                        }
+                    });
+                    $(this.el).append(errorOverlay.render().el);
                     return;
                 }
                 $(event.currentTarget).removeClass("noCommands").addClass("takingCommands");
                 console.log("We are taking commands!");
-                this.recognition.continuous = true;
 
-                var interimResult = '';
-                var list = $('.speechtext');
 
-                this.recognition.start();
-
-                this.recognition.onspeechstart = function (event) {
-                  console.log('Look who is talking!');
+                if(cannonerd.config.inLocalMode){
+                    this.recognition.continuous = true;
+                    var list = $('.speechtext');
+                    this.recognition.start();
+                    this.recognition.onspeechstart = function (event) {
+                        console.log('Look who is talking!');
+                    }
+                    var handled = [];
+                    this.recognition.onresult = function (event) {
+                        _.each(event.results, function (result, idx) {
+                            if (!result.isFinal) {
+                                return;
+                            }
+                            if (handled.indexOf(idx) !== -1) {
+                                return;
+                            }
+                            list.append($('<li>' + result[0].transcript + '</li>'));
+                            handled.push(idx);
+                        });
+                    }.bind(this);
+                    this.recognition.onend = function() {
+                        $('.takingCommands').removeClass('takingCommands').addClass('noCommands');
+                        this.recognition = null;
+                    }.bind(this);
+                }else{
+                    //the phonegap implementation lives here
+                    console.log("We have speech, now what");
+                    this.recognition.start();
+                    this.recognition.onspeechstart = function (event) {
+                        console.log('Look who is talking!');
+                    }
+                    this.recognition.onresult = function (event) {
+                        _.each(event.results, function (result, idx) {
+                            if (!result.isFinal) {
+                                return;
+                            }
+                            if (handled.indexOf(idx) !== -1) {
+                                return;
+                            }
+                            list.append($('<li>' + result[0].transcript + '</li>'));
+                            handled.push(idx);
+                        });
+                    }.bind(this);
+                    this.recognition.onend = function() {
+                        $('.takingCommands').removeClass('takingCommands').addClass('noCommands');
+                        this.recognition = null;
+                    }.bind(this);
                 }
 
-                var handled = [];
-                this.recognition.onresult = function (event) {
-                  _.each(event.results, function (result, idx) {
-                    if (!result.isFinal) {
-                      return;
-                    }
-                    if (handled.indexOf(idx) !== -1) {
-                      return;
-                    }
-                    list.append($('<li>' + result[0].transcript + '</li>'));
-                    handled.push(idx);
-                  });
-                }.bind(this);
 
-                this.recognition.onend = function() {
-                    $('.takingCommands').removeClass('takingCommands').addClass('noCommands');
-                    this.recognition = null;
-                }.bind(this);
+
             }
         } else {
             applicationRoute.navigate("#" + thisPage, true);
@@ -131,8 +171,8 @@ basilicom.views.SecondPageView = Backbone.View.extend({
 * @type Backbone View
 */
 
-basilicom.views.ThirdPageView = Backbone.View.extend({
-    localizations: basilicom.language.thirdpage,
+cannonerd.views.ThirdPageView = Backbone.View.extend({
+    localizations: cannonerd.language.thirdpage,
     events: {
         "click .pageLink": "nextPage"
     },

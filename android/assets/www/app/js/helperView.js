@@ -1,11 +1,11 @@
-basilicom.helperviews = {};
+cannonerd.helperviews = {};
 
 /**
  * @type Backbone View
  *///TODO:Wrap up as a component!!
 
 
-basilicom.helperviews.errorOverlay= Backbone.View.extend({
+cannonerd.helperviews.errorOverlay= Backbone.View.extend({
     attrs: {},
     events: {
         'click .feedbackbutton': 'clickAction'
@@ -22,13 +22,12 @@ basilicom.helperviews.errorOverlay= Backbone.View.extend({
     render: function () {
         this.$el.html(_.template($('#errorOverlay').html(), this.attrs));
         $('body').fadeIn(250);
-
         return this;
     }
 });
 
 
-basilicom.helperviews.topNavigation= Backbone.View.extend({
+cannonerd.helperviews.topNavigation= Backbone.View.extend({
     attrs: {},
     events: {
         'click .feedbackbuttonsmall': 'clickAction'

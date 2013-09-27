@@ -20,7 +20,6 @@
         <script type="text/javascript" charset="utf-8" src="lib/handlebars.js"></script>
         <script type="text/javascript" charset="utf-8" src="lib/underscore-min.js"></script>
         <script type="text/javascript" charset="utf-8" src="lib/jquery.js"></script>
-        <script type="text/javascript" charset="utf-8" src="lib/speechRec.js"></script>
         <script type="text/javascript" charset="utf-8" src="lib/jquery.json-2.3.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="lib/backbone.js"></script>
 
@@ -44,7 +43,7 @@
                     <div class="dialogView">
                         <div class="dialogViewInner">
                             <h5><%= title %></h5>
-                            <p><%= title %></p>
+                            <p><%= description %></p>
                             <ul class="actions">
                                 <% _.each(actions, function(action, label) { %>
                                 <li><div class="pageLink feedbackbutton" id="<%= label %>" data-link="<%= label %>">
@@ -62,7 +61,7 @@
         <script type="text/x-handlebars-template" id="firstpage">
             <div>
                 <div class="header">
-                    <h1>{{header}}</h1>
+                    <h1 class="headertext">{{header}}</h1>
                 </div>
             <div class="scroller">
                 <div data-link="secondpage" class="feedbackbutton pageLink">{{{speech}}}</div>
@@ -76,12 +75,12 @@
             <div>
                 <div class="header">
                     <div data-link="firstpage" class="feedbackbuttonsmall pageLink">{{{back}}}</div>
-                    <h1>{{{header}}}</h1>
+                    <h1 class="headertext">{{{header}}}</h1>
                 </div>
                 <div class="scroller">
                     <div data-link="talk" class="feedbackbutton pageLink">{{{talk}}}</div>
                     <p>{{{textbox}}}</p>
-                    <textarea></textarea>
+                    <ul class="speechtext"></ul>
                 </div>
             </div>
         </script>
