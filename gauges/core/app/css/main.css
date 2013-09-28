@@ -16,8 +16,13 @@ body{
     width: 66%;
 }
 
-.compassWrapper{
+.upperpanelWrapper{
+position: absolute;
+display: block;
+}
 
+.compassWrapper{
+position: relative;
 }
 .attitudeWrapper{
     top:30%;
