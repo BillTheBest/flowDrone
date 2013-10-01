@@ -8,7 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <!-- The Scripts. All the js files and css stylesheets we are going to need -->
-        <link type="text/css" rel="stylesheet" href="css/main.css">
+       <!-- <link type="text/css" rel="stylesheet" href="css/main.css">-->
 
         <!-- Keep in mind that the order of the scripts and stylesheets matters -->
 
@@ -29,25 +29,73 @@
         <script type="text/javascript" charset="utf-8" src="js/models.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/view.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+        <style>
+            body{
 
+
+            }
+            .attitudeWrapper{
+                width: 300px;
+                height: 300px;
+                background-image:url(https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/bg.jpg);
+                overflow: hidden;
+            }
+            .attitudemoving{
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+                height: auto;
+            }
+            .coverup{
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+            }
+            .gaugeframebg {
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+            }
+            .attitudestaticouter {
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+            }
+            .attitudestatic {
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+            }
+
+        </style>
         <!-- HOME VIEW -->
         <script type="text/x-handlebars-template" id="firstpage">
 
-        
+<!--
+
             <div class="compassWrapper">
                 <img class="gaugeframebg" src="asset/img/frame/instrumentframe-without-screws.png" alt="gaugeframebg">
                 <img class="compassrotator" src="asset/img/compass/compass-dial.png" alt="compassrotator">
                 <img class="centerstatic" src="asset/img/compass/compass-hand.png" alt="centerstatic">
             </div>
+-->
+
+
 
             <div class="attitudeWrapper">
-                <img class="attitudemoving" src="asset/img/attitude/attitude-inner-dial-big.png" alt="altitudemoving">
-                <img class="gaugeframebg" src="asset/img/frame/instrumentframe-without-screws.png" alt="gaugeframebg">
-                <img class="attitudestaticouter" src="asset/img/attitude/attitude-outer-dial.png" alt="altitudestaticouter">
-                <img class="attitudestatic" src="asset/img/attitude/static-parts_with_shadow.png" alt="altitudestatic">
+                <img class="attitudemoving" src="https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude/attitude-inner-dial-big.png" alt="altitudemoving">
+                <img class="coverup" src="https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude/coverup.png" alt="coverup">
+                <img class="gaugeframebg" src="https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude/instrumentframe-without-screws.png" alt="gaugeframebg">
+                <img class="attitudestaticouter" src="https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude/attitude-outer-dial.png" alt="altitudestaticouter">
+                <img class="attitudestatic" src="https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude/static-parts_with_shadow.png" alt="altitudestatic">
             </div>
 
-            <div class="speedometerWrapper">
+          <!--  <div class="speedometerWrapper">
                 <img class="gaugeframebg" src="asset/img/frame/instrumentframe-without-screws.png" alt="gaugeframebg">
                 <img class="speedometerstaticbg" src="asset/img/speedmeter/dial.png" alt="speedometerstaticbg">
                 <img class="speedometerpointer" src="asset/img/speedmeter/hand.png" alt="speedometerpointer">
@@ -64,7 +112,7 @@
                 <img class="batterystaticbg" src="asset/img/battery/dial.png" alt="speedometerstaticbg">
                 <img class="batterypointer" src="asset/img/battery/hand.png" alt="speedometerpointer">
             </div>
-            
+            -->
 
         </script>
 
