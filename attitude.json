@@ -1,0 +1,432 @@
+{
+  "properties": {
+    "environment": {
+      "runtime": "html",
+      "src": "./preview/iframe.html",
+      "width": "300",
+      "height": "300",
+      "content": "<style>\nbody{\n    width: 100%;\n    background-image:url(https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/bg.jpg);\n    overflow: hidden;\n}\n.attitudeWrapper{\n    position: absolute;\n    top:0;\n    left:0;\n    width: 300px;\n\n}\n.attitudemoving{\n    position: absolute;\n    top:0;\n    left:0;\n    width: 100%;\n}\n.gaugeframebg,\n.attitudestaticouter,\n.attitudestatic\n{   \n    position: absolute;\n    top:75px;\n    left:25%;\n    width: 50%;\n}       \n</style>\n<div class=\"attitudeWrapper\">\n  <img class=\"attitudemoving\" src=\"https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude-inner-dial-big.png\" alt=\"altitudemoving\">\n  <img class=\"gaugeframebg\" src=\"https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/instrumentframe-without-screws.png\" alt=\"gaugeframebg\">\n  <img class=\"attitudestaticouter\" src=\"https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude-outer-dial.png\" alt=\"altitudestaticouter\">\n  <img class=\"attitudestatic\" src=\"https://raw.github.com/cannonerd/flowDrone/master/gauges/core/app/asset/img/attitude-static-part.png\" alt=\"altitudestatic\">\n</div>\n"
+    },
+    "name": "attitude"
+  },
+  "exports": [],
+  "processes": {
+    "websocket/ListenMessages_ayju7": {
+      "component": "websocket/ListenMessages",
+      "metadata": {
+        "x": 354,
+        "y": -18,
+        "label": "websocket/ListenMessages"
+      }
+    },
+    "strings/ParseJson_jgdy3": {
+      "component": "strings/ParseJson",
+      "metadata": {
+        "x": 572,
+        "y": -19,
+        "label": "strings/ParseJson"
+      }
+    },
+    "readRotationInformation_2o8ti": {
+      "component": "objects/GetObjectKey",
+      "metadata": {
+        "x": 369,
+        "y": 110,
+        "label": "readRotationInformation"
+      }
+    },
+    "core/Split_c7f4x": {
+      "component": "core/Split",
+      "metadata": {
+        "x": 812,
+        "y": -22,
+        "label": "core/Split"
+      }
+    },
+    "readRoll_uqiba": {
+      "component": "objects/GetObjectKey",
+      "metadata": {
+        "x": 559,
+        "y": 220,
+        "label": "readRoll"
+      }
+    },
+    "core/Output_eae5q": {
+      "component": "core/Output",
+      "metadata": {
+        "x": 345,
+        "y": -132,
+        "label": "core/Output"
+      }
+    },
+    "core/Split_gjqy2": {
+      "component": "core/Split",
+      "metadata": {
+        "x": 598,
+        "y": 108,
+        "label": "core/Split"
+      }
+    },
+    "readPitch_e1jcz": {
+      "component": "objects/GetObjectKey",
+      "metadata": {
+        "x": 804,
+        "y": 219,
+        "label": "readPitch"
+      }
+    },
+    "websocket/Connect_2acfk": {
+      "component": "websocket/Connect",
+      "metadata": {
+        "x": 143,
+        "y": -16,
+        "label": "websocket/Connect"
+      }
+    },
+    "css/RotateElement_xmtvj": {
+      "component": "css/RotateElement",
+      "metadata": {
+        "x": 399,
+        "y": 580,
+        "label": "css/RotateElement"
+      }
+    },
+    "dom/GetElement_dug0t": {
+      "component": "dom/GetElement",
+      "metadata": {
+        "x": 271,
+        "y": 437,
+        "label": "dom/GetElement"
+      }
+    },
+    "core/Split_tb40f": {
+      "component": "core/Split",
+      "metadata": {
+        "x": 598.000732421875,
+        "y": 386.55479431152344,
+        "label": "core/Split"
+      }
+    },
+    "css/RotateElement_u67to": {
+      "component": "css/RotateElement",
+      "metadata": {
+        "x": 675,
+        "y": 579,
+        "label": "css/RotateElement"
+      }
+    },
+    "dom/GetElement_xrzaa": {
+      "component": "dom/GetElement",
+      "metadata": {
+        "x": 799,
+        "y": 427,
+        "label": "dom/GetElement"
+      }
+    },
+    "css/SetElementTop_qniq": {
+      "component": "css/SetElementTop",
+      "metadata": {
+        "x": 1038,
+        "y": 524,
+        "label": "css/SetElementTop"
+      }
+    },
+    "dom/GetElement_ipasd": {
+      "component": "dom/GetElement",
+      "metadata": {
+        "x": 1248,
+        "y": 389,
+        "label": "dom/GetElement"
+      }
+    },
+    "dom/GetElement_9tqca": {
+      "component": "dom/GetElement",
+      "metadata": {
+        "x": 321,
+        "y": 487,
+        "label": "dom/GetElement"
+      }
+    },
+    "math/Multiply_l8dh6": {
+      "component": "math/Multiply",
+      "metadata": {
+        "x": 1079,
+        "y": 259,
+        "label": "math/Multiply"
+      }
+    }
+  },
+  "connections": [
+    {
+      "src": {
+        "process": "websocket/Connect_2acfk",
+        "port": "connection"
+      },
+      "tgt": {
+        "process": "websocket/ListenMessages_ayju7",
+        "port": "connection"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "websocket/ListenMessages_ayju7",
+        "port": "string"
+      },
+      "tgt": {
+        "process": "strings/ParseJson_jgdy3",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "core/Split_c7f4x",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "readRotationInformation_2o8ti",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "core/Split_gjqy2",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "readRoll_uqiba",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "dom/GetElement_dug0t",
+        "port": "element"
+      },
+      "tgt": {
+        "process": "css/RotateElement_xmtvj",
+        "port": "element"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "websocket/Connect_2acfk",
+        "port": "error"
+      },
+      "tgt": {
+        "process": "core/Output_eae5q",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "strings/ParseJson_jgdy3",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "core/Split_c7f4x",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "core/Split_tb40f",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "css/RotateElement_xmtvj",
+        "port": "degrees"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "readRotationInformation_2o8ti",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "core/Split_gjqy2",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "readRoll_uqiba",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "core/Split_tb40f",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "core/Split_tb40f",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "css/RotateElement_u67to",
+        "port": "degrees"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "dom/GetElement_xrzaa",
+        "port": "element"
+      },
+      "tgt": {
+        "process": "css/RotateElement_u67to",
+        "port": "element"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "math/Multiply_l8dh6",
+        "port": "product"
+      },
+      "tgt": {
+        "process": "css/SetElementTop_qniq",
+        "port": "top"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "dom/GetElement_ipasd",
+        "port": "element"
+      },
+      "tgt": {
+        "process": "css/SetElementTop_qniq",
+        "port": "element"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "readPitch_e1jcz",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "math/Multiply_l8dh6",
+        "port": "multiplicand"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "src": {
+        "process": "core/Split_gjqy2",
+        "port": "out"
+      },
+      "tgt": {
+        "process": "readPitch_e1jcz",
+        "port": "in"
+      },
+      "metadata": {
+        "route": 0
+      }
+    },
+    {
+      "data": "roll",
+      "tgt": {
+        "process": "readRoll_uqiba",
+        "port": "key"
+      }
+    },
+    {
+      "data": "rotation",
+      "tgt": {
+        "process": "readRotationInformation_2o8ti",
+        "port": "key"
+      }
+    },
+    {
+      "data": "pitch",
+      "tgt": {
+        "process": "readPitch_e1jcz",
+        "port": "key"
+      }
+    },
+    {
+      "data": ".attitudemoving",
+      "tgt": {
+        "process": "dom/GetElement_dug0t",
+        "port": "selector"
+      }
+    },
+    {
+      "data": "flowcopter",
+      "tgt": {
+        "process": "websocket/Connect_2acfk",
+        "port": "protocol"
+      }
+    },
+    {
+      "data": "ws://localhost:8000",
+      "tgt": {
+        "process": "websocket/Connect_2acfk",
+        "port": "url"
+      }
+    },
+    {
+      "data": ".attitudestaticouter",
+      "tgt": {
+        "process": "dom/GetElement_xrzaa",
+        "port": "selector"
+      }
+    },
+    {
+      "data": ".attitudemoving",
+      "tgt": {
+        "process": "dom/GetElement_ipasd",
+        "port": "selector"
+      }
+    },
+    {
+      "data": "1",
+      "tgt": {
+        "process": "math/Multiply_l8dh6",
+        "port": "multiplier"
+      }
+    }
+  ]
+}
